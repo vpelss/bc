@@ -38,8 +38,40 @@ jobs:
         cd bin
         make
         ./bridgecommand --version
-        cd createDeb
-        ./buildDeb
+        mkdir -p AppDir/usr/bin
+        cp -r bc/bin AppDir/usr
+        #can clean up AppDir/usr/bin first if we like
+        rm -r AppDir/usr/bin/BridgeCommand.app
+        rm -r AppDir/usr/bin/CMakeFiles
+        rm -r AppDir/usr/bin/controller
+        rm -r AppDir/usr/bin/createDeb
+        rm -r AppDir/usr/bin/editor
+        rm -r AppDir/usr/bin/iniEditor
+        rm -r AppDir/usr/bin/launcher
+        rm -r AppDir/usr/bin/libs
+        rm -r AppDir/usr/bin/multiplayerHub
+        rm -r AppDir/usr/bin/repeater
+        rm -r AppDir/usr/bin/*.exe
+        rm -r AppDir/usr/bin/*.dll
+        #get our preconfiged files
+        git clone --depth 1 https://github.com/vpelss/bridgecommand_AppImage.git
+        #place AppRun script in AppDir
+        cp bridgecommand_AppImage/AppRun AppDir
+        #place bridgecommand.desktop in AppDir
+        cp bridgecommand_AppImage/bridgecommand.desktop AppDir
+        #place bridgecommand.png in AppDir
+        cp bridgecommand_AppImage/bridgecommand.png AppDir
+        #set permissions
+        chmod +x AppDir/AppRun
+        chmod +x AppDir/usr/bin/bridgecommand*
+        chmod +x AppDir/bridgecommand.desktop
+        # 3. Get linuxdeploy and create our AppImage file
+        wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+        chmod +x linuxdeploy-x86_64.AppImage
+        #run linuxdeploy and fix up generate an AppDir (add lib) and build AppImage 
+        ARCH=x86_64 ./linuxdeploy-x86_64.AppImage -v 1 --appdir AppDir --output appimage
+        #cd createDeb
+        #./buildDeb
       
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
