@@ -37,7 +37,8 @@ jobs:
         cd bin
         make
         ./bridgecommand --version
-        cd ..
+        cd ../../
+        ls -l
         mkdir -p AppDir/usr/bin
         cp -r bc/bin AppDir/usr
         #can clean up AppDir/usr/bin first if we like
