@@ -76,7 +76,7 @@ jobs:
         cp Bridge_Command-x86_64.AppImage bc
         #cd createDeb
         #./buildDeb
-        ls -l /bc
+        ls -l bc
       
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
