@@ -67,6 +67,7 @@ jobs:
         chmod +x AppDir/usr/bin/bridgecommand*
         chmod +x AppDir/bridgecommand.desktop
         # 3. Get linuxdeploy and create our AppImage file
+        sudo apt install libfuse2
         wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
         chmod +x linuxdeploy-x86_64.AppImage
         #run linuxdeploy and fix up generate an AppDir (add lib) and build AppImage 
@@ -79,5 +80,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: bc_AppImage
-        path: Bridge_Command-x86_64.AppImage --appimage-extract
+        path: Bridge_Command-x86_64.AppImage 
         #path: bin/createDeb/bridgecommand.deb
