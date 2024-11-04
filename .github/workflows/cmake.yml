@@ -73,13 +73,14 @@ jobs:
         #run linuxdeploy and fix up generate an AppDir (add lib) and build AppImage 
         ARCH=x86_64 ./linuxdeploy-x86_64.AppImage -v 1 --appdir AppDir --output appimage
         chmod 777 Bridge_Command-x86_64.AppImage
+        cp Bridge_Command-x86_64.AppImage /bc
         #cd createDeb
         #./buildDeb
-        ls -l
+        ls -l /bc
       
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: bc_AppImage
-        path: ../Bridge_Command-x86_64.AppImage 
+        path: Bridge_Command-x86_64.AppImage 
         #path: bin/createDeb/bridgecommand.deb
