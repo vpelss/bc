@@ -38,6 +38,7 @@ jobs:
         cd bin
         make
         ./bridgecommand --version
+        cd ..
         mkdir -p AppDir/usr/bin
         cp -r bc/bin AppDir/usr
         #can clean up AppDir/usr/bin first if we like
@@ -77,4 +78,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: linux-amd64
-        path: bin/createDeb/bridgecommand.deb
+        path: Bridge_Command-x86_64.AppImage
+        #path: bin/createDeb/bridgecommand.deb
