@@ -3,9 +3,8 @@ name: CMake
 on:
   pull_request:
   push:
-    paths: 
-      - '**/Constants.hpp'
-
+    branches: [ "main" ]
+    
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
