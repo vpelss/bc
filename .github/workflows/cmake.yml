@@ -1,4 +1,4 @@
-name: CMake
+name: bridgecommandAppImageBuild
 
 on: workflow_dispatch
     
